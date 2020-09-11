@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HostService } from './services/host.service';
-import { Zone } from './models/host.model';
+import { HostService } from '../../services/host.service';
+import { Zone } from '../../models/host.model';
 import { faFileMedical, faBiohazard, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -13,8 +13,6 @@ export class AppComponent {
   faFileMedical = faFileMedical;
   faBiohazard = faBiohazard;
   faEllipsisH = faEllipsisH;
-  // sections: Section[] = [];
-  // combinedData: any[] = [];
 
   constructor (private service: HostService) {}
 
@@ -25,8 +23,6 @@ export class AppComponent {
   findAllHosts() {
     this.service.findAllUsers().subscribe(hosts => {
      this.zones = hosts.zones;
-    //  this.sections = hosts.sections;
-
      this.zones.forEach((zone) => {
         zone.sections = [];
         hosts.sections.forEach((section, sectionIndex) => {
@@ -40,8 +36,6 @@ export class AppComponent {
           }
         });
      });
-
-     console.log(this.zones);
     });
   }
 }
