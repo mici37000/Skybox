@@ -1,0 +1,71 @@
+.sections-data {
+    margin-top: 20px;
+    font-size: 14px;
+    color: $primary-color;
+
+    .table {
+        border: 4px solid $border-color;
+        color: $primary-color;
+
+        fa-icon {
+            color: $primary-color;
+        }
+
+        .header {
+            padding: 4px 0;
+            text-align: center;
+            font-weight: bold;
+            background-color: $header-bg-color;
+        }
+
+        .head-row {
+            th {
+                text-align: center;
+            }
+
+            .split {
+                height: 50px;
+                padding: 0;
+                margin: 0;
+    
+                > div {
+                    position: relative;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+    
+                    > .line {
+                        width: 100%;
+                        height: 47px;
+                        border-bottom: 1px solid $primary-color;
+                        transform: translateY(-20px) translateX(5px) rotate(12deg);
+                        position: absolute;
+                        z-index: -1;
+                    }
+    
+                    > .title {
+                        position: absolute;
+    
+                        &.bottom {
+                            bottom: 1px;
+                            left: 3px;
+                        }
+    
+                        &.top {
+                        top: 1px;
+                        right: 3px;
+                      }
+                    }
+                }
+            }
+        }
+
+        .section {
+            .progress {
+                height: 7px;
+                margin-bottom: 3px;
+            }
+        }
+    }
+}
