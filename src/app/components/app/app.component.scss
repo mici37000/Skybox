@@ -12,14 +12,14 @@
             color: $primary-color;
         }
 
-        thead {
+        > thead {
             padding: 4px 0;
             text-align: center;
             font-weight: bold;
             background-color: $header-bg-color;
         }
 
-        tbody {
+        > tbody {
             th,td {
                 position: relative;
                 
@@ -85,8 +85,8 @@
                             }
         
                             &.top {
-                            top: 1px;
-                            right: 3px;
+                                top: 1px;
+                                right: 3px;
                           }
                         }
                     }
