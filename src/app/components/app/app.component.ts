@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HostService } from '../../services/host.service';
-import { Zone } from '../../models/host.model';
+import { ZoneService } from '../../services/zone.service';
+import { Zone } from '../../models/zone.model';
 import { faFileMedical, faBiohazard, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,18 +14,18 @@ export class AppComponent {
   faBiohazard = faBiohazard;
   faEllipsisH = faEllipsisH;
 
-  constructor (private service: HostService) {}
+  constructor (private service: ZoneService) {}
 
   ngOnInit() {
-    this.findAllHosts();
+    this.getZones();
   }
 
-  findAllHosts() {
-    this.service.findAllUsers().subscribe(hosts => {
-     this.zones = hosts.zones;
+  getZones() {
+    this.service.getZones().subscribe(data => {
+     this.zones = data.zones;
      this.zones.forEach((zone) => {
         zone.sections = [];
-        hosts.sections.forEach((section, sectionIndex) => {
+        data.sections.forEach((section, sectionIndex) => {
           if (sectionIndex < this.zones.length) {
             if (zone.guid === section.destinationGuid) {
               section.incomplianceLevel = 100 - section.complianceLevel;

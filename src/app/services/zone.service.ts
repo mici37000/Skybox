@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../config/config';
-import { ResponseObject } from '../models/host.model';
+import { ResponseObject } from '../models/zone.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HostService {
+export class ZoneService {
 
   constructor(private http: HttpClient) { }
 
-  findAllUsers() {
+  getZones() {
     return this.http.get<ResponseObject>(`${Config.restApiUrl}zones.json`)
-      .pipe(
-          map(resposneData => {
-              return resposneData;
-          })
-      );
   }
 }
