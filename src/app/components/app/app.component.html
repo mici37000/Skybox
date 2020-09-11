@@ -1,15 +1,16 @@
 <div class="container-fluid sections-data">
   <div class="table-responsive">
     <table class="table table-bordered">
-      <tr class="header">
-        <td [attr.colspan]="zones.length + 1">
-          NIST-Access Policy Compliance Matrix
-          <fa-icon [icon]="faEllipsisH" class="float-right"></fa-icon>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <td [attr.colspan]="zones.length + 1">
+            NIST-Access Policy Compliance Matrix
+            <fa-icon [icon]="faEllipsisH" class="float-right"></fa-icon>
+          </td>
+        </tr>
+      </thead>
       <tbody>
-        <tr class="head-row">
-          <!-- <th>Source\Destination</th> -->
+        <tr>
           <th class="split">
             <div>
               <span class="title bottom">Source</span>
@@ -21,13 +22,13 @@
         </tr>
         <tr *ngFor="let z of zones">
           <td>
-            <div> {{ z.name }}</div>
+            <div>{{ z.name }}</div>
             <div>
               <fa-icon [icon]="faFileMedical"></fa-icon>
               {{ z.complianceLevel || 0 }}%
             </div>
           </td>
-          <td *ngFor="let s of z.sections" class="section">
+          <td *ngFor="let s of z.sections">
             <ng-container *ngIf="s">
               <div class="progress">
                 <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ width: s.complianceLevel + '%' }" [attr.aria-valuenow]="s.complianceLevel" aria-valuemin="0" aria-valuemax="100"></div>

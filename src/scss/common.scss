@@ -11,60 +11,92 @@
             color: $primary-color;
         }
 
-        .header {
+        thead {
             padding: 4px 0;
             text-align: center;
             font-weight: bold;
             background-color: $header-bg-color;
         }
 
-        .head-row {
-            th {
-                text-align: center;
+        tbody {
+            th,td {
+                position: relative;
+                
+                &:hover {
+                    background-color: $table-hover-bg-color;
+                }
+
+                @mixin leading{
+                    background-color: $table-leading-bg-color;
+                    content: '\00a0';
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                &:hover::before {
+                    @include leading;
+                    height: 100%;
+                    right: 0;
+                    top: 0;
+                    width: 10000px;
+                }
+
+                &:hover::after {
+                    @include leading;
+                    height: 10000px;
+                    left: 0;
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                }
             }
 
-            .split {
-                height: 50px;
-                padding: 0;
-                margin: 0;
+            th {
+                text-align: center;
     
-                > div {
-                    position: relative;
-                    height: 100%;
-                    width: 100%;
-                    top: 0;
-                    left: 0;
-    
-                    > .line {
+                &.split {
+                    height: 50px;
+                    padding: 0;
+                    margin: 0;
+        
+                    > div {
+                        position: relative;
+                        height: 100%;
                         width: 100%;
-                        height: 47px;
-                        border-bottom: 1px solid $primary-color;
-                        transform: translateY(-20px) translateX(5px) rotate(12deg);
-                        position: absolute;
-                        z-index: -1;
-                    }
-    
-                    > .title {
-                        position: absolute;
-    
-                        &.bottom {
-                            bottom: 1px;
-                            left: 3px;
+                        top: 0;
+                        left: 0;
+        
+                        > .line {
+                            width: 100%;
+                            height: 47px;
+                            border-bottom: 1px solid $primary-color;
+                            transform: translateY(-20px) translateX(5px) rotate(12deg);
+                            position: absolute;
                         }
-    
-                        &.top {
-                        top: 1px;
-                        right: 3px;
-                      }
+        
+                        > .title {
+                            position: absolute;
+                            font-style: italic;
+        
+                            &.bottom {
+                                bottom: 1px;
+                                left: 3px;
+                            }
+        
+                            &.top {
+                            top: 1px;
+                            right: 3px;
+                          }
+                        }
                     }
                 }
             }
-        }
 
-        .section {
-            .progress {
-                height: 7px;
-                margin-bottom: 3px;
+            td {
+                .progress {
+                    height: 7px;
+                    margin-bottom: 3px;
+                }
             }
         }
     }
