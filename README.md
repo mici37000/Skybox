@@ -6,7 +6,7 @@ Zones control dashboard
 
 1. Clone the repository: ```git clone https://github.com/mici37000/Skybox.git```
 2. Set terminal to skybox directory: ```cd skybox```
-3. Instal npm modules ```ipm install```
+3. Install npm modules ```npm install```
 
 ## Running the app
 
