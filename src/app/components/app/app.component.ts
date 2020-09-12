@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ZoneService } from '../../services/zone.service';
-import { Zone } from '../../models/zone.model';
+import { Zone, Section } from '../../models/zone.model';
 import { faFileMedical, faBiohazard, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -22,20 +22,24 @@ export class AppComponent {
 
   getZones() {
     this.service.getZones().subscribe(data => {
-     this.zones = data.zones;
-     this.zones.forEach((zone) => {
-        zone.sections = [];
-        data.sections.forEach((section, sectionIndex) => {
-          if (sectionIndex < this.zones.length) {
-            if (zone.guid === section.destinationGuid) {
-              section.incomplianceLevel = 100 - section.complianceLevel;
-              zone.sections.push(section);
-            } else {
-              zone.sections.push(null);
+      this.zones = data.zones;
+      const dest = this.zones.map(z => {
+        return { "destinationGuid": z.guid };
+      }) as Section[];
+      this.zones.map(z => z.sections = Object.assign([], dest));
+
+      this.zones.forEach(zone => {
+          zone.sections.forEach((section, i, arr) => {
+            const match = data.sections.find(s =>
+              s.sourceGuid === zone.guid && s.destinationGuid === section.destinationGuid);
+
+            if (match) {
+              match.incomplianceLevel = 100 - match.complianceLevel;
             }
-          }
-        });
-     });
+            
+            arr[i] = match;
+          });
+      });
     });
   }
 }
