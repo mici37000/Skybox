@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ZoneService } from '../../services/zone.service';
-import { Zone, Section } from '../../models/zone.model';
+import { Zone } from '../../models/zone.model';
+import { Section } from '../../models/section.model';
 import { faFileMedical, faBiohazard, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
