@@ -1,0 +1,12 @@
+<div class="progress">
+    <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ width: complianceLevel + '%' }"
+          [attr.aria-valuenow]="complianceLevel"
+          aria-valuemin="0"
+          aria-valuemax="100">
+    </div>
+    <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{ width: incomplianceLevel + '%' }"
+          [attr.aria-valuenow]="incomplianceLevel"
+          aria-valuemin="0"
+          aria-valuemax="100">
+    </div>
+</div>

@@ -30,18 +30,9 @@
           </td>
           <td *ngFor="let s of z.sections">
             <ng-container *ngIf="s">
-              <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ width: s.complianceLevel + '%' }"
-                      [attr.aria-valuenow]="s.complianceLevel"
-                      aria-valuemin="0"
-                      aria-valuemax="100">
-                  </div>
-                <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{ width: s.incomplianceLevel + '%' }"
-                      [attr.aria-valuenow]="s.incomplianceLevel"
-                      aria-valuemin="0"
-                      aria-valuemax="100">
-                </div>
-              </div>
+              <app-progress [appComplianceLevel]="s.complianceLevel"
+                            [appIncomplianceLevel]="s.incomplianceLevel">
+              </app-progress>
               <div>
                 <fa-icon [icon]="faFileMedical" [fixedWidth]="true"></fa-icon>
                 {{ s.complianceLevel }}%
