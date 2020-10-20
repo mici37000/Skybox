@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ZoneService } from '../../services/zone.service';
 import { Zone } from '../../models/zone.model';
 import { Section } from '../../models/section.model';
@@ -9,7 +9,7 @@ import { faFileMedical, faBiohazard, faEllipsisH } from '@fortawesome/free-solid
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   zones: Zone[] = [];
   faFileMedical = faFileMedical;
   faBiohazard = faBiohazard;
